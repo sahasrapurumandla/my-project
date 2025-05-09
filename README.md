@@ -61,11 +61,13 @@ pp/
 │   │   ├── meetingController.js
 │   │   └── projectController.js
 │   │
+
 │   ├── middleware/               # Authentication and error handling
 │   │   ├── authMiddleware.js
 │   │   ├── errorMiddleware.js
 │   │   └── uploadMiddleware.js
 │   │
+
 │   ├── models/                   # Mongoose schema definitions
 │   │   ├── Application.js
 │   │   ├── Chat.js
@@ -73,6 +75,7 @@ pp/
 │   │   ├── Project.js
 │   │   └── User.js
 │   │
+
 │   ├── routes/                   # Route definitions for each feature
 │   │   ├── adminRoutes.js
 │   │   ├── applicationRoutes.js
@@ -81,6 +84,7 @@ pp/
 │   │   ├── meetingRoutes.js
 │   │   └── projectRoutes.js
 │   │
+
 │   ├── uploads/                  # Uploaded resume files
 │   │   └── resumes/
 │   │       └── sample.pdf
@@ -89,6 +93,8 @@ pp/
 │   ├── package.json              # Project metadata and dependencies
 │   └── server.js                 # Entry point of backend
 │
+
+
 ├── FEWEB/                        # Frontend HTML structure
 │   ├── admindashboard/
 │   │   ├── admindashboard.html
