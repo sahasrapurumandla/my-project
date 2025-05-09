@@ -1,14 +1,18 @@
-ReadMe file
 MU Connect – Final Year Project Application Portal
-MU Connect is a role-based web portal developed as part of the Software Engineering course project at Mahindra University. It enables final-year students to apply for faculty-offered projects and facilitates streamlined project management for faculty and administrators.
+
+MU Connect is a role-based web portal developed as part of the Software Engineering course project at Mahindra University.
+It enables final-year students to apply for faculty-offered projects and facilitates streamlined project management for faculty and administrators.
+
 How to Run the Project Locally
  Prerequisites
 •	Node.js (v16+)
 •	MongoDB (local or cloud)
 •	VS Code (recommended for Live Server extension and running the whole project in the terminal)
+
 Clone the Repository
 git clone "https://github.com/sahasrapurumandla/my-project"
 cd mu-connect
+
 Backend Setup
 In termina(VScode) run below commands one by one to download the node_models and packages:
 •	cd backend
@@ -19,10 +23,11 @@ In termina(VScode) run below commands one by one to download the node_models and
 •	npm install nodemon --save-dev
 •	npm install multer
 •	npm install mongodb
-Then run the server.j:
+Then run the server.js:
 npm start
 you will see it is connected to mongodb 
-server running in port :5000
+server running in port :
+
 Frontend Setup
 Navigate to the frontend folder:
 cd /FEWEB
@@ -33,6 +38,7 @@ Admin	 admin@gmail.com	   admin123
 Faculty	 faculty@gmail.com	    faculty123
 Student	  student@gmail.com         student123
 
+
  Features
 •	Role-Based Login for Students, Faculty, and Admins
 •	Students can view projects, apply with SOP + resume
@@ -41,6 +47,8 @@ Student	  student@gmail.com         student123
 •	Resume Upload (PDF only) using Multer
 •	Authentication with JWT tokens
 •	RESTful API following MVC architecture
+
+
 Tech Stack
 •	Frontend: HTML, CSS, JavaScript
 •	Backend: Node.js, Express.js
@@ -49,6 +57,8 @@ Tech Stack
 •	Authentication: JSON Web Tokens (JWT)
 •	File Upload: Multer
 •	Architecture: MVC Pattern
+
+
 Folder Structure
 pp/
 │
@@ -62,11 +72,13 @@ pp/
 │   │   └── projectController.js
 │   │
 
+
 │   ├── middleware/               # Authentication and error handling
 │   │   ├── authMiddleware.js
 │   │   ├── errorMiddleware.js
 │   │   └── uploadMiddleware.js
 │   │
+
 
 │   ├── models/                   # Mongoose schema definitions
 │   │   ├── Application.js
@@ -76,6 +88,7 @@ pp/
 │   │   └── User.js
 │   │
 
+
 │   ├── routes/                   # Route definitions for each feature
 │   │   ├── adminRoutes.js
 │   │   ├── applicationRoutes.js
@@ -84,6 +97,7 @@ pp/
 │   │   ├── meetingRoutes.js
 │   │   └── projectRoutes.js
 │   │
+
 
 │   ├── uploads/                  # Uploaded resume files
 │   │   └── resumes/
@@ -95,6 +109,8 @@ pp/
 │
 
 
+
+
 ├── FEWEB/                        # Frontend HTML structure
 │   ├── admindashboard/
 │   │   ├── admindashboard.html
@@ -103,6 +119,7 @@ pp/
 │   │   ├── reports.html
 │   │   └── user-management.html
 │   │
+
 │   ├── facultydashboard/
 │   │   ├── chatfaculty.html
 │   │   ├── facultydashboard.html
@@ -110,12 +127,14 @@ pp/
 │   │   ├── manageproject.html
 │   │   └── reviewapplication.html
 │   │
+
 │   ├── login-form/
 │   │   ├── dist/
 │   │   │   ├── index.html
 │   │   │   └── style.css
 │   │   └── src/                  # (if any custom scripts used)
 │   │
+
 │   ├── studentdashboard/
 │   │   ├── apply.html
 │   │   ├── chat.html
