@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Available Projects | MU Connect</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #0e1a2b;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ef;
+      margin-bottom: 30px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #1f293a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 238, 255, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h2 {
+      color: #0ef;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      margin: 8px 0;
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #0ef;
+      color: #1f293a;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Available Projects</h1>
+
+  <div class="project-grid">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <h2>AI Chatbot for Student Queries</h2>
+      <p><strong>Faculty:</strong> Dr. Smitha Rao</p>
+      <p><strong>Skills:</strong> Python, NLP, Flask</p>
+      <p><strong>Description:</strong> Build a chatbot using NLP to answer student questions in real-time.</p>
+      <a href="apply.html?project=AI%20Chatbot" class="btn">Apply</a>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <h2>IoT Smart Attendance System</h2>
+      <p><strong>Faculty:</strong> Prof. Arvind Patel</p>
+      <p><strong>Skills:</strong> IoT, Arduino, Embedded C</p>
+      <p><strong>Description:</strong> Create a smart attendance system using RFID and IoT sensors.</p>
+      <a href="apply.html?project=IoT%20Attendance" class="btn">Apply</a>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <h2>Web Portal for University Events</h2>
+      <p><strong>Faculty:</strong> Ms. Shalini Gupta</p>
+      <p><strong>Skills:</strong> HTML, CSS, JavaScript, Node.js</p>
+      <p><strong>Description:</strong> Design a platform for posting and registering university events.</p>
+      <a href="apply.html?project=Event%20Portal" class="btn">Apply</a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('applicationForm')?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+  
+      const projectTitle = document.getElementById('projectTitle').value.trim();
+      const sop = document.getElementById('sop').value.trim();
+      const resumeInput = document.getElementById('resume');
+      const token = localStorage.getItem('token');
+  
+      if (!token) {
+        return alert('You must be logged in to apply.');
+      }
+  
+      try {
+        // Step 1: Get project ID by title
+        const projectRes = await fetch(`http://localhost:5000/api/projects/by-title/${encodeURIComponent(projectTitle)}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+  
+        if (!projectRes.ok) {
+          throw new Error('Project not found.');
+        }
+  
+        const project = await projectRes.json();
+  
+        // Step 2: Submit application
+        const formData = new FormData();
+        formData.append('projectId', project._id);
+        formData.append('sop', sop);
+        if (resumeInput.files.length > 0) {
+          formData.append('resume', resumeInput.files[0]);
+        }
+  
+        const applyRes = await fetch('http://localhost:5000/api/projects', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData
+        });
+  
+        const result = await applyRes.json();
+  
+        if (!applyRes.ok) {
+          throw new Error(result.message || 'Error submitting application.');
+        }
+  
+        alert('✅ Application submitted successfully!');
+        document.getElementById('applicationForm').reset();
+  
+      } catch (err) {
+        console.error(err);
+        alert('❌ ' + err.message);
+      }
+    });
+  </script>
+  
+  
+</body>
+</html>

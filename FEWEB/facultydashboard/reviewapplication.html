@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Review Applications | MU Connect</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #0e1a2b;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ef;
+      margin-bottom: 30px;
+    }
+
+    .application-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .application-card {
+      background-color: #1f293a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 238, 255, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .application-card h3 {
+      color: #0ef;
+      margin-bottom: 10px;
+    }
+
+    .application-card p {
+      margin: 6px 0;
+    }
+
+    .application-actions {
+      margin-top: 15px;
+    }
+
+    .application-actions button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .approve-btn {
+      background-color: #0ef;
+      color: #1f293a;
+    }
+
+    .reject-btn {
+      background-color: #e63946;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Review Applications</h1>
+
+  <div class="application-list">
+
+    <div class="application-card">
+      <h3>AI Chatbot Project</h3>
+      <p><strong>Student:</strong> John Doe</p>
+      <p><strong>Email:</strong> john.doe@example.com</p>
+      <p><strong>Statement of Purpose:</strong> I'm passionate about AI and want to contribute to this chatbot project using my NLP knowledge.</p>
+      <div class="application-actions">
+        <button class="approve-btn">Approve</button>
+        <button class="reject-btn">Reject</button>
+      </div>
+    </div>
+
+    <div class="application-card">
+      <h3>Smart Attendance System</h3>
+      <p><strong>Student:</strong> Priya Sharma</p>
+      <p><strong>Email:</strong> priya.sharma@example.com</p>
+      <p><strong>Statement of Purpose:</strong> I have experience with Arduino and am very interested in building smart solutions using IoT.</p>
+      <div class="application-actions">
+        <button class="approve-btn">Approve</button>
+        <button class="reject-btn">Reject</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const approveBtns = document.querySelectorAll('.approve-btn');
+    const rejectBtns = document.querySelectorAll('.reject-btn');
+
+    approveBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert("Application approved!");
+        // Later: Call backend API to update status
+      });
+    });
+
+    rejectBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert("Application rejected.");
+        // Later: Call backend API to update status
+      });
+    });
+  </script>
+
+</body>
+</html>

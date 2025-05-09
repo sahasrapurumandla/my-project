@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Oversight | Admin</title>
+  <link rel="stylesheet" href="../studentdashboard/style.css" />
+  <script>
+    if (localStorage.getItem('role') !== 'admin') {
+      window.location.href = '../login-form/dist/index.html';
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0e1a2b;
+      color: #fff;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #1f293a;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar h2 {
+      color: #0ef;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 20px 0;
+    }
+
+    .sidebar a {
+      color: #0ef;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #0ef;
+      color: #1f293a;
+    }
+
+    .main-content {
+      margin-left: 240px;
+      padding: 30px;
+      flex: 1;
+    }
+
+    .main-content h1 {
+      color: #0ef;
+      font-size: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #24344d;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #0ef;
+    }
+
+    th {
+      background-color: #1f293a;
+      color: #0ef;
+    }
+
+    .btn {
+      background-color: #0ef;
+      color: #1f293a;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="admindashboard.html">Dashboard</a></li>
+      <li><a href="user-management.html">User Management</a></li>
+      <li><a href="project-oversight.html">Project Oversight</a></li>
+      <li><a href="#">Reports</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>All Faculty Projects</h1>
+
+    <table id="projectTable">
+      <thead>
+        <tr>
+          <th>Project Title</th>
+          <th>Faculty</th>
+          <th>Description</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS will render here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.clear();
+      window.location.href = '../login-form/dist/index.html';
+    }
+
+    const sampleProjects = [
+      {
+        title: "AI-Based Chatbot",
+        faculty: "Dr. A. Mehta",
+        description: "Building an AI chatbot for student queries.",
+        department: "CSE"
+      },
+      {
+        title: "IoT for Smart Campus",
+        faculty: "Prof. R. Sharma",
+        description: "Monitoring energy usage using IoT devices.",
+        department: "ECE"
+      }
+    ];
+
+    function renderProjects() {
+      const tbody = document.querySelector("#projectTable tbody");
+
+      // If no projects exist yet, set dummy ones
+      if (!localStorage.getItem('projects')) {
+        localStorage.setItem('projects', JSON.stringify(sampleProjects));
+      }
+
+      const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+
+      projects.forEach(proj => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${proj.title}</td>
+          <td>${proj.faculty}</td>
+          <td>${proj.description}</td>
+          <td>${proj.department}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    renderProjects();
+  </script>
+</body>
+</html>

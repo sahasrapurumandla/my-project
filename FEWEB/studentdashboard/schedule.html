@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Schedule Meeting | MU Connect</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #0e1a2b;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ef;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1f293a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 238, 255, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #0ef;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #24344d;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    .btn {
+      background-color: #0ef;
+      color: #1f293a;
+      font-weight: bold;
+      padding: 12px 25px;
+      margin-top: 25px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .meeting-list {
+      margin: 40px auto 0;
+      max-width: 600px;
+    }
+
+    .meeting-item {
+      background: #1f293a;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 238, 255, 0.05);
+    }
+
+    .meeting-item strong {
+      color: #0ef;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Schedule a Meeting</h1>
+
+  <form id="meetingForm">
+    <label for="faculty">Select Faculty</label>
+    <select id="faculty" name="faculty" required>
+      <option value="">-- Select Faculty --</option>
+      <option value="Dr. Smitha Rao">Dr. Smitha Rao</option>
+      <option value="Prof. Arvind Patel">Prof. Arvind Patel</option>
+      <option value="Ms. Shalini Gupta">Ms. Shalini Gupta</option>
+    </select>
+
+    <label for="date">Meeting Date</label>
+    <input type="date" id="date" name="date" required />
+
+    <label for="time">Meeting Time</label>
+    <input type="time" id="time" name="time" required />
+
+    <button type="submit" class="btn">Request Meeting</button>
+  </form>
+
+  <div class="meeting-list">
+    <h2 style="color:#0ef;">Upcoming Meetings</h2>
+    <div class="meeting-item">
+      <strong>Dr. Smitha Rao</strong><br>
+      📅 2025-04-12 @ 15:00
+    </div>
+    <div class="meeting-item">
+      <strong>Prof. Arvind Patel</strong><br>
+      📅 2025-04-14 @ 10:00
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('meetingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Meeting request submitted!');
+      // You can use fetch() here to send data to your backend
+    });
+  </script>
+
+</body>
+</html>

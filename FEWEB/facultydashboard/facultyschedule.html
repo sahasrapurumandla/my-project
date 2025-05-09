@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Schedule Meetings | MU Connect</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #0e1a2b;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ef;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1f293a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 238, 255, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #0ef;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #24344d;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    .btn {
+      background-color: #0ef;
+      color: #1f293a;
+      font-weight: bold;
+      padding: 12px 25px;
+      margin-top: 25px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .meeting-list {
+      margin: 40px auto 0;
+      max-width: 600px;
+    }
+
+    .meeting-item {
+      background: #1f293a;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 238, 255, 0.05);
+    }
+
+    .meeting-item strong {
+      color: #0ef;
+    }
+
+    .meeting-item button {
+      margin-top: 10px;
+      background-color: #e63946;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Schedule a Meeting with Student</h1>
+
+  <form id="meetingForm">
+    <label for="student">Select Student</label>
+    <select id="student" name="student" required>
+      <option value="">-- Select Student --</option>
+      <option value="John Doe">John Doe</option>
+      <option value="Priya Sharma">Priya Sharma</option>
+    </select>
+
+    <label for="date">Meeting Date</label>
+    <input type="date" id="date" name="date" required />
+
+    <label for="time">Meeting Time</label>
+    <input type="time" id="time" name="time" required />
+
+    <button type="submit" class="btn">Schedule</button>
+  </form>
+
+  <div class="meeting-list">
+    <h2 style="color:#0ef;">Upcoming Meetings</h2>
+
+    <div class="meeting-item">
+      <strong>John Doe</strong><br>
+      📅 2025-04-15 @ 14:00
+      <button onclick="alert('Meeting cancelled!')">Cancel</button>
+    </div>
+
+    <div class="meeting-item">
+      <strong>Priya Sharma</strong><br>
+      📅 2025-04-18 @ 10:00
+      <button onclick="alert('Meeting cancelled!')">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('meetingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Meeting scheduled successfully!');
+      // Here you would POST to your backend
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
